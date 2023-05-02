@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Container } from '@mui/material';
 import './App.css';
+import Header from './components/Header';
+import Display from './components/Display';
+import About from './components/About';
+import Insta from './components/Insta';
+import Collaborations from './components/Collaborations';
+import ChatBox from './components/ChatBox';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+
+        <Routes>
+          <Route exact path = "/" element={(
+            <>
+              <Container maxWidth="xs">
+                <Header />
+                <Display />
+                <About />
+                <Insta />
+                <Collaborations/>
+              </Container> 
+            </>
+          )} 
+          />
+        </Routes>
+        <Routes>
+            <Route exact path = "/message" element={(
+              <>
+                <Container maxWidth="xs">
+                  <ChatBox />
+                </Container>
+              </>
+            )}
+            />
+        </Routes>   
+      </div>
+    </Router> 
   );
 }
 
